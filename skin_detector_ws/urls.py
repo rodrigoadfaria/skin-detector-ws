@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 
 from rest_framework_nested import routers
 
-from thinkster_django_angular_boilerplate.views import IndexView
+from skin_detector_ws.views import IndexView
 
 from authentication.views import AccountViewSet, LoginView, LogoutView
 from posts.views import AccountPostsViewSet, PostViewSet

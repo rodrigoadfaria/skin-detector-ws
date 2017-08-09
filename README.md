@@ -1,4 +1,4 @@
-# thinkster-django-angular-boilerplate
+# skin-detector-ws
 
 ## Installation
 
@@ -6,10 +6,9 @@
 [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/) and
 [Node.js](http://nodejs.org/).*
 
-* Fork this repository.
-* `$ git clone git@github.com:<your username>/thinkster-django-angular-boilerplate.git`
-* `$ mkvirtualenv thinkster-djangular`
-* `$ cd thinkster-django-angular-boilerplate/`
+* `$ git clone git@bitbucket.org:rodrigoadfaria/skin-detector-ws.git`
+* `$ mkvirtualenv skin-detector-ws`
+* `$ cd skin-detector-ws/`
 * `$ pip install -r requirements.txt`
 * `$ npm install -g bower`
 * `$ npm install`
