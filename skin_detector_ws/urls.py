@@ -8,6 +8,7 @@ from skin_detector_ws.views import IndexView
 
 from authentication.views import AccountViewSet, LoginView, LogoutView
 from posts.views import AccountPostsViewSet, PostViewSet
+from datasets.views import DatasetViewSet
 
 from django.contrib import admin
 admin.autodiscover()
@@ -15,6 +16,7 @@ admin.autodiscover()
 router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
 router.register(r'posts', PostViewSet)
+router.register(r'datasets', DatasetViewSet)
 
 accounts_router = routers.NestedSimpleRouter(
     router, r'accounts', lookup='account'
@@ -27,6 +29,7 @@ urlpatterns = [
 	url(r'^api/v1/', include(accounts_router.urls)),
 	url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
 	url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
+	#url(r'^datasets/', include('datasets.urls')),
 
 	url(r'^admin/', include(admin.site.urls)),
 

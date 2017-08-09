@@ -7,7 +7,7 @@
       'thinkster.routes',
       'thinkster.authentication',
       'thinkster.layout',
-      'thinkster.posts',
+      'thinkster.datasets',
       'thinkster.utils'
     ])
     .run(run);

@@ -9,12 +9,12 @@
     .module('thinkster.authentication.controllers')
     .controller('RegisterController', RegisterController);
 
-  RegisterController.$inject = ['$location', '$scope', 'Authentication'];
+  RegisterController.$inject = ['$location', '$scope', '$http', 'Authentication', 'Snackbar'];
 
   /**
   * @namespace RegisterController
   */
-  function RegisterController($location, $scope, Authentication) {
+  function RegisterController($location, $scope, $http, Authentication, Snackbar) {
     var vm = this;
 
     vm.register = register;
@@ -54,6 +54,7 @@
       * @desc Log the new user in
       */
       function registerSuccessFn(data, status, headers, config) {
+        Snackbar.show('User registered successfully!');
         Authentication.login(email, password);
       }
 
@@ -62,7 +63,7 @@
       * @desc Log "Epic failure!" to the console
       */
       function registerErrorFn(data, status, headers, config) {
-        console.error('Epic failure!');
+        Snackbar.show(data.error);
       }
     }
 

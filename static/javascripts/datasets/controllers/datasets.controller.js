@@ -1,20 +1,20 @@
 /**
-* PostsController
-* @namespace thinkster.posts.controllers
+* DatasetsController
+* @namespace thinkster.datasets.controllers
 */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.posts.controllers')
-    .controller('PostsController', PostsController);
+    .module('thinkster.datasets.controllers')
+    .controller('DatasetsController', DatasetsController);
 
-  PostsController.$inject = ['$scope'];
+  DatasetsController.$inject = ['$scope'];
 
   /**
-  * @namespace PostsController
+  * @namespace DatasetsController
   */
-  function PostsController($scope) {
+  function DatasetsController($scope) {
     var vm = this;
 
     vm.columns = [];
@@ -25,10 +25,10 @@
     /**
     * @name activate
     * @desc Actions to be performed when this controller is instantiated
-    * @memberOf thinkster.posts.controllers.PostsController
+    * @memberOf thinkster.datasets.controllers.DatasetsController
     */
     function activate() {
-      $scope.$watchCollection(function () { return $scope.posts; }, render);
+      $scope.$watchCollection(function () { return $scope.datasets; }, render);
       $scope.$watch(function () { return $(window).width(); }, render);
     }
 
@@ -36,8 +36,8 @@
     /**
     * @name calculateNumberOfColumns
     * @desc Calculate number of columns based on screen width
-    * @returns {Number} The number of columns containing Posts
-    * @memberOf thinkster.posts.controllers.PostsControllers
+    * @returns {Number} The number of columns containing Datasets
+    * @memberOf thinkster.datasets.controllers.DatasetsControllers
     */
     function calculateNumberOfColumns() {
       var width = $(window).width();
@@ -58,7 +58,7 @@
     * @name approximateShortestColumn
     * @desc An algorithm for approximating which column is shortest
     * @returns The index of the shortest column
-    * @memberOf thinkster.posts.controllers.PostsController
+    * @memberOf thinkster.datasets.controllers.DatasetsController
     */
     function approximateShortestColumn() {
       var scores = vm.columns.map(columnMapFn);
@@ -73,7 +73,7 @@
       */
       function columnMapFn(column) {
         var lengths = column.map(function (element) {
-          return element.content.length;
+          return element.description.length;
         });
 
         return lengths.reduce(sum, 0) * column.length;
@@ -95,10 +95,10 @@
 
     /**
     * @name render
-    * @desc Renders Posts into columns of approximately equal height
-    * @param {Array} current The current value of 'vm.posts'
-    * @param {Array} original The value of 'vm.posts' before it was updated
-    * @memberOf thinkster.posts.controllers.PostsController
+    * @desc Renders Datasets into columns of approximately equal height
+    * @param {Array} current The current value of 'vm.datasets'
+    * @param {Array} original The value of 'vm.datasets' before it was updated
+    * @memberOf thinkster.datasets.controllers.DatasetsController
     */
     function render(current, original) {
       if (current !== original) {

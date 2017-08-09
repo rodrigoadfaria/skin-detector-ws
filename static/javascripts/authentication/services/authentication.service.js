@@ -79,7 +79,7 @@
        * @desc Log "Epic failure!" to the console
        */
       function loginErrorFn(data, status, headers, config) {
-        console.error('Epic failure!');
+        Snackbar.show(data.error)
       }
     }
 
@@ -153,7 +153,7 @@
        * @desc Log "Epic failure!" to the console
        */
       function logoutErrorFn(data, status, headers, config) {
-        console.error('Epic failure!');
+        Snackbar.show(data.error)
       }
     }
 

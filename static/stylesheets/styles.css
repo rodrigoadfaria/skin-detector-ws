@@ -1,21 +1,15 @@
-.no-posts-here {
+.no-datasets-here {
   text-align: center;
 }
 
-.post {}
+.dataset {}
 
-.post .post__meta {
+.dataset .dataset__meta {
   font-weight: bold;
   text-align: right;
   padding-bottom: 19px;
 }
 
-.post .post__meta a:hover {
+.dataset .dataset__meta a:hover {
   text-decoration: none;
-}
-
-.btn-add-new-post {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
 }

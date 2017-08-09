@@ -24,6 +24,7 @@ DEBUG = os.environ.get('DEBUG', True)
 
 # Application definition
 INSTALLED_APPS = (
+    'datasets.apps.DatasetsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
