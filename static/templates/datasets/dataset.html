@@ -3,14 +3,36 @@
     <div class="well">
       <div class="dataset">
         <div class="dataset__meta">
-          <a href="/+{{ dataset.name }}">
-            +{{ dataset.name }}
+          <a href="/{{ dataset.name }}">
+            {{ dataset.name }}
           </a>
         </div>
 
-        <div class="dataset__content">
+        <div class="dataset__description">
           {{ dataset.description }}
         </div>
+
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>Precision</td>
+              <td>{{ dataset.precision }}</td>
+            </tr>
+            <tr>
+              <td>Recall</td>
+              <td>{{ dataset.recall }}</td>
+            </tr>
+            <tr>
+              <td>Specificity</td>
+              <td>{{ dataset.specificity }}</td>
+            </tr>
+            <tr>
+              <td>F-measure</td>
+              <td>{{ dataset.fmeasure }}</td>
+            </tr>
+          </tbody>
+        </table> 
+
       </div>
     </div>
   </div>

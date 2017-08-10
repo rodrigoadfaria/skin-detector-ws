@@ -1,8 +1,8 @@
 from django.db import models
 
 class Dataset(models.Model):
-    #author = models.ForeignKey(Account)
-    name = models.TextField()
+
+    name = models.TextField(max_length=140, blank=False)
     description = models.TextField()
     size = models.IntegerField()
 

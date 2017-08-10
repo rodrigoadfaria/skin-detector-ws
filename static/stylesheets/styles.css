@@ -4,9 +4,13 @@
 
 .dataset {}
 
+.dataset .dataset__description {
+  padding-bottom: 10px;
+}
+
 .dataset .dataset__meta {
   font-weight: bold;
-  text-align: right;
+  text-align: left;
   padding-bottom: 19px;
 }
 
