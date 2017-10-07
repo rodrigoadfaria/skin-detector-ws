@@ -8,6 +8,7 @@
       'thinkster.authentication',
       'thinkster.layout',
       'thinkster.datasets',
+      'thinkster.samples',
       'thinkster.utils'
     ])
     .run(run);

@@ -21,7 +21,13 @@
     var directive = {
       restrict: 'E',
       scope: {
-        dataset: '='
+        dataset: '=',
+        onclick_fired: '&ondataset'
+      },
+      link: function(scope, elem, attrs) {
+        elem.bind('click', function() {
+          scope.onclick_fired();
+        });
       },
       templateUrl: '/static/templates/datasets/dataset.html'
     };

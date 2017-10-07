@@ -9,18 +9,18 @@
     .module('thinkster.datasets.controllers')
     .controller('DatasetsController', DatasetsController);
 
-  DatasetsController.$inject = ['$scope'];
+  DatasetsController.$inject = ['$scope', '$location', 'Datasets', 'Snackbar'];
 
   /**
   * @namespace DatasetsController
   */
-  function DatasetsController($scope) {
+  function DatasetsController($scope, $location, Datasets, Snackbar) {
     var vm = this;
 
     vm.columns = [];
+    vm.show_samples = showSamples;
 
     activate();
-
 
     /**
     * @name activate
@@ -32,6 +32,15 @@
       $scope.$watch(function () { return $(window).width(); }, render);
     }
 
+    /**
+    * @name showSamples
+    * @desc Redirect the page to get the samples of the given dataset
+    * @memberOf thinkster.datasets.controllers.DatasetsControllers
+    */
+    function showSamples(dataset) {
+      $location.path('/samples/'+ dataset.id);
+      $scope.$apply();
+    }
 
     /**
     * @name calculateNumberOfColumns

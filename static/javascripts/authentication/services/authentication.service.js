@@ -9,13 +9,13 @@
     .module('thinkster.authentication.services')
     .factory('Authentication', Authentication);
 
-  Authentication.$inject = ['$cookies', '$http'];
+  Authentication.$inject = ['$cookies', '$http', 'Snackbar'];
 
   /**
   * @namespace Authentication
   * @returns {Factory}
   */
-  function Authentication($cookies, $http) {
+  function Authentication($cookies, $http, Snackbar) {
     /**
     * @name Authentication
     * @desc The Factory to be returned
@@ -63,25 +63,26 @@
       return $http.post('/api/v1/auth/login/', {
         email: email, password: password
       }).then(loginSuccessFn, loginErrorFn);
-
-      /**
-       * @name loginSuccessFn
-       * @desc Set the authenticated account and redirect to index
-       */
-      function loginSuccessFn(data, status, headers, config) {
-        Authentication.setAuthenticatedAccount(data.data);
-
-        window.location = '/';
-      }
-
-      /**
-       * @name loginErrorFn
-       * @desc Log "Epic failure!" to the console
-       */
-      function loginErrorFn(data, status, headers, config) {
-        Snackbar.show(data.error)
-      }
     }
+
+    /**
+     * @name loginSuccessFn
+     * @desc Set the authenticated account and redirect to index
+     */
+    function loginSuccessFn(data, status, headers, config) {
+      Authentication.setAuthenticatedAccount(data.data);
+
+      window.location = '/';
+    }
+
+    /**
+     * @name loginErrorFn
+     * @desc Log "Epic failure!" to the console
+     */
+    function loginErrorFn(data, status, headers, config) {
+      Snackbar.show(data.data.message)
+    }
+
 
     /**
      * @name getAuthenticatedAccount
@@ -137,24 +138,24 @@
     function logout() {
       return $http.post('/api/v1/auth/logout/')
         .then(logoutSuccessFn, logoutErrorFn);
+    }
 
-      /**
-       * @name logoutSuccessFn
-       * @desc Unauthenticate and redirect to index with page reload
-       */
-      function logoutSuccessFn(data, status, headers, config) {
-        Authentication.unauthenticate();
+    /**
+     * @name logoutSuccessFn
+     * @desc Unauthenticate and redirect to index with page reload
+     */
+    function logoutSuccessFn(data, status, headers, config) {
+      Authentication.unauthenticate();
 
-        window.location = '/';
-      }
+      window.location = '/';
+    }
 
-      /**
-       * @name logoutErrorFn
-       * @desc Log "Epic failure!" to the console
-       */
-      function logoutErrorFn(data, status, headers, config) {
-        Snackbar.show(data.error)
-      }
+    /**
+     * @name logoutErrorFn
+     * @desc Log "Epic failure!" to the console
+     */
+    function logoutErrorFn(data, status, headers, config) {
+      Snackbar.show(data.data.message)
     }
 
   }

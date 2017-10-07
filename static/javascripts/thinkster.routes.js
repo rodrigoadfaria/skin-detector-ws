@@ -20,6 +20,10 @@
       controller: 'LoginController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/authentication/login.html'
+    }).when('/samples/:dataset_id', {
+      controller: 'SamplesController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/samples/samples.html'
     }).when('/', {
       controller: 'IndexController',
       controllerAs: 'vm',

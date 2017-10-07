@@ -38,13 +38,13 @@
 
    /**
      * @name get
-     * @desc Get the Datasets of a given user
-     * @param {string} username The username to get Datasets for
+     * @desc Get the Samples of a given dataset
+     * @param {string} dataset The dataset to get Samples for
      * @returns {Promise}
      * @memberOf thinkster.datasets.services.Datasets
      */
-    function get(username) {
-      return $http.get('/api/v1/accounts/' + username + '/datasets/');
+    function get(dataset) {
+      return $http.get('/api/v1/datasets/' + dataset);
     }
   }
 })();

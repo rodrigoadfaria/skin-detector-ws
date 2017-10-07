@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from samples.models import Sample
 from samples.serializers import SampleSerializer
 
+import logging
 
 class SampleViewSet(viewsets.ModelViewSet):
     queryset = Sample.objects.order_by('name')
@@ -22,12 +23,12 @@ class SampleViewSet(viewsets.ModelViewSet):
         return super(SampleViewSet, self).perform_create(serializer)
 
 
-class AccountSamplesViewSet(viewsets.ViewSet):
-    queryset = Sample.objects.select_related('author').all()
+class DatasetSamplesViewSet(viewsets.ViewSet):
+    queryset = Sample.objects.select_related('dataset').all()
     serializer_class = SampleSerializer
 
-    def list(self, request, account_username=None):
-        queryset = self.queryset.filter(author__username=account_username)
+    def list(self, request, dataset_pk=None):
+        queryset = self.queryset.filter(dataset=dataset_pk)
         serializer = self.serializer_class(queryset, many=True)
 
         return Response(serializer.data)
