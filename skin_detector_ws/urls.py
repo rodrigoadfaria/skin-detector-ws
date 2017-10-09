@@ -30,5 +30,7 @@ urlpatterns = [
 
 	url(r'^admin/', include(admin.site.urls)),
 
-    url('^.*$', IndexView.as_view(), name='index'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^$', IndexView.as_view(), name='index'),
+]
+#urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

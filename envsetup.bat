@@ -1,0 +1,1 @@
+..\..\..\..\development\virtualenvs\django111\Scripts\activate
