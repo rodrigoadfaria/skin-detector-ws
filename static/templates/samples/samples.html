@@ -1,6 +1,14 @@
 
 <div ng-repeat="sample in vm.samples">
   <div class="row" ng-cloak>
+    <div class="col-sm-12">
+      <span class="col-sm-8">{{ sample.name }}</span>
+      <span class="col-sm-1">P: {{ sample.precision }}</span>
+      <span class="col-sm-1">R: {{ sample.recall }}</span>
+      <span class="col-sm-1">S: {{ sample.specificity }}</span>
+      <span class="col-sm-1">F: {{ sample.fmeasure }}</span>
+    </div>
+
     <div class="col-sm-3">
       <a href="#">
         <img class="thumbnail" src="{{ sample.original_image }}" alt="" width="304" height="236">
