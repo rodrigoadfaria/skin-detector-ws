@@ -1,7 +1,10 @@
 from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
+from django.core.exceptions import ObjectDoesNotExist
+
 from datasets.models import Dataset
 from samples.models import Sample
+from metrics.models import Metric
 
 # so you can access settings.MEDIA_ROOT
 from django.conf import settings
@@ -66,12 +69,17 @@ class Command(BaseCommand):
         title = os.path.splitext(base)[0]
 
         dataset = Dataset.objects.get(id=dataset_id)
-        p = Sample(dataset=dataset, name=title, \
-                original_image=original_img, \
-                ground_truth_image=gound_truth_img, \
-                ground_truth_binary_image=gound_truth_color_img, \
-                output_image=output_img, \
-                trapezia_image=trapezia_img, \
-                precision=precision, recall=recall, \
-                specificity=specificity, fmeasure=fmeasure)
-        p.save()
+        try:
+            s = Sample.objects.filter(dataset=dataset_id, name=title)[:1].get()
+        except ObjectDoesNotExist:
+            s = Sample(dataset=dataset, name=title, \
+                    original_image=original_img, \
+                    ground_truth_image=gound_truth_img, \
+                    ground_truth_color_image=gound_truth_color_img, \
+                    output_image=output_img, \
+                    trapezia_image=trapezia_img)
+            s.save()
+
+        m = Metric(precision=precision, recall=recall, fmeasure=fmeasure, \
+                specificity=specificity, dataset=dataset, sample=s)
+        m.save()

@@ -39,8 +39,14 @@ def main():
     global SKIN_DETECTOR_VAR
 
     for d in ['pratheepan', 'sfa', 'hgr']:
+        DATASET = d
+        dataset_id = '7'
+        if d == 'sfa':
+            dataset_id = '8'
+        elif d == 'hgr':
+            dataset_id = '9'
+
         for v in ['cbs', 'crs', 'cmb', 'ngh']:
-            DATASET = d
             SKIN_DETECTOR_VAR = v
 
             print('Deploying '+ DATASET + ' dataset with '+ SKIN_DETECTOR_VAR)
@@ -69,7 +75,7 @@ def main():
                 command += " --re "+ recall
                 command += " --sp "+ specificity
                 command += " --fm "+ fmeasure
-                command += " --dataset_id 1"
+                command += " --dataset_id "+ dataset_id
                 os.system(command)
 
 if __name__ == "__main__":

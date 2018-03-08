@@ -12,9 +12,8 @@ class SampleSerializer(serializers.ModelSerializer):
         model = Sample
 
         fields = ('id', 'name', 'original_image', 'ground_truth_image', \
-            'ground_truth_binary_image', 'output_image', 'trapezia_image', \
-            'precision', 'recall', 'specificity', 'fmeasure', 'dataset', \
-            'created_at', 'updated_at')
+            'ground_truth_color_image', 'output_image', 'trapezia_image', \
+            'metrics', 'dataset', 'created_at', 'updated_at')
 
         read_only_fields = ('id', 'created_at', 'updated_at')
 

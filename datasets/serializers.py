@@ -9,8 +9,8 @@ class DatasetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Dataset
 
-        fields = ('id', 'name', 'description', 'size', 'precision', 'recall',\
-            'specificity', 'fmeasure', 'created_at', 'updated_at')
+        fields = ('id', 'name', 'description', 'size', 'metrics', \
+            'created_at', 'updated_at')
         read_only_fields = ('id', 'created_at', 'updated_at')
 
     def get_validation_exclusions(self, *args, **kwargs):

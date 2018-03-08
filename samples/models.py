@@ -8,14 +8,9 @@ class Sample(models.Model):
 
     original_image = models.ImageField(null=False, blank=False)
     ground_truth_image = models.ImageField()
-    ground_truth_binary_image = models.ImageField()
+    ground_truth_color_image = models.ImageField()
     output_image = models.ImageField()
     trapezia_image = models.ImageField()
-
-    precision = models.FloatField()
-    recall = models.FloatField()
-    specificity = models.FloatField()
-    fmeasure = models.FloatField()
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
