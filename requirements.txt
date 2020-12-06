@@ -11,7 +11,7 @@ ExifRead==2.1.2
 gunicorn==19.7.1
 numpy==1.13.3+mkl
 olefile==0.44
-Pillow==4.2.1
+Pillow==7.1.0
 pytz==2017.2
 rcssmin==1.0.6
 rjsmin==1.0.12
